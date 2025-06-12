@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гомоку 15x15</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Гомоку 15x15</h1>
+        
+        <div class="game-info">
+            <div class="info-panel">
+                <h3>Информация</h3>
+                <div class="info-item">
+                    <span>Следующий ход:</span>
+                    <span id="current-player">X</span>
+                </div>
+                <div class="info-item">
+                    <span>Ваш символ:</span>
+                    <span id="human-symbol">X</span>
+                </div>
+                <div class="info-item">
+                    <span>Символ ИИ:</span>
+                    <span id="ai-symbol">O</span>
+                </div>
+                <div class="info-item">
+                    <span>Ходов сделано:</span>
+                    <span id="move-count">0</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="symbol-selection">
+                    <h4>Выберите символ:</h4>
+                    <button id="select-x" class="symbol-btn active">X (первый ход)</button>
+                    <button id="select-o" class="symbol-btn">O (второй ход)</button>
+                </div>
+                <button id="new-game" class="control-btn">Новая игра</button>
+                <button id="restart" class="control-btn">Перезапуск</button>
+            </div>
+        </div>
+        
+        <div class="game-board-container">
+            <div class="coordinates-top">
+                <div class="coord-label"></div>
+                <div class="coord-labels">
+                    <span class="coord">a</span><span class="coord">b</span><span class="coord">c</span><span class="coord">d</span><span class="coord">e</span>
+                    <span class="coord">f</span><span class="coord">g</span><span class="coord">h</span><span class="coord">i</span><span class="coord">j</span>
+                    <span class="coord">k</span><span class="coord">l</span><span class="coord">m</span><span class="coord">n</span><span class="coord">o</span>
+                </div>
+            </div>
+            
+            <div class="board-with-coords">
+                <div class="coordinates-left">
+                    <span class="coord">15</span><span class="coord">14</span><span class="coord">13</span><span class="coord">12</span><span class="coord">11</span>
+                    <span class="coord">10</span><span class="coord">9</span><span class="coord">8</span><span class="coord">7</span><span class="coord">6</span>
+                    <span class="coord">5</span><span class="coord">4</span><span class="coord">3</span><span class="coord">2</span><span class="coord">1</span>
+                </div>
+                
+                <div id="game-board" class="game-board"></div>
+                
+                <div class="coordinates-right">
+                    <span class="coord">15</span><span class="coord">14</span><span class="coord">13</span><span class="coord">12</span><span class="coord">11</span>
+                    <span class="coord">10</span><span class="coord">9</span><span class="coord">8</span><span class="coord">7</span><span class="coord">6</span>
+                    <span class="coord">5</span><span class="coord">4</span><span class="coord">3</span><span class="coord">2</span><span class="coord">1</span>
+                </div>
+            </div>
+            
+            <div class="coordinates-bottom">
+                <div class="coord-label"></div>
+                <div class="coord-labels">
+                    <span class="coord">a</span><span class="coord">b</span><span class="coord">c</span><span class="coord">d</span><span class="coord">e</span>
+                    <span class="coord">f</span><span class="coord">g</span><span class="coord">h</span><span class="coord">i</span><span class="coord">j</span>
+                    <span class="coord">k</span><span class="coord">l</span><span class="coord">m</span><span class="coord">n</span><span class="coord">o</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="game-status" class="game-status"></div>
+        
+        <div class="rules">
+            <h3>Правила игры:</h3>
+            <ul>
+                <li>Цель: выстроить 5 символов подряд (горизонталь, вертикаль или диагональ)</li>
+                <li>X всегда ходит первым</li>
+                <li>Нельзя ставить символ в клетку, которая не граничит с уже занятой (кроме первого хода)</li>
+                <li>Выберите свой символ и нажмите "Новая игра"</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
