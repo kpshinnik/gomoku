@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гомоку 15x15</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v={{ range(1000, 9999) | random }}">
 </head>
 <body>
     <div class="container">
@@ -91,6 +91,34 @@
         </div>
     </div>
     
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- Прогресс-бар ИИ -->
+    <div id="ai-thinking-overlay" class="ai-thinking-overlay">
+        <div class="ai-thinking-container">
+            <div class="ai-thinking-title">
+                <span class="ai-thinking-icon">🤖</span>
+                <span>ИИ размышляет...</span>
+            </div>
+            <div class="progress-bar-container">
+                <div id="ai-progress-bar" class="progress-bar"></div>
+            </div>
+            <div id="ai-thinking-message" class="ai-thinking-message">Анализирую возможные ходы...</div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно результата игры -->
+    <div id="game-result-modal" class="game-result-modal">
+        <div id="modal-content" class="modal-content">
+            <button class="close-modal" onclick="closeGameResultModal()">&times;</button>
+            <div id="result-icon" class="result-icon">🏆</div>
+            <div id="result-title" class="result-title">Игра окончена!</div>
+            <div id="result-message" class="result-message">Поздравляем с победой!</div>
+            <div class="modal-buttons">
+                <button class="modal-btn primary" onclick="startNewGameFromModal()">Новая игра</button>
+                <button class="modal-btn secondary" onclick="closeGameResultModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script_with_logs.js') }}?v={{ range(1000, 9999) | random }}"></script>
 </body>
 </html> 
